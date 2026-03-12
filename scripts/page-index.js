@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             let html = '<ul class="activity-list">';
             events.forEach(ev => {
-                const dateStr = ev.date.toLocaleString('cs-CZ', { day: 'numeric', month: 'short', hour: '2-digit', minute:'2-digit' });
+                const dateStr = ev.date.toLocaleString('cs-CZ', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute:'2-digit' });
                 const icon = ev.type === 'add' ? '📥' : '📤';
                 
                 html += `

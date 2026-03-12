@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <section class="section">
                 <div class="page-header">
                     <a href="index.html" class="back-link">← Zpět na přehled</a>
-                    <h1 class="section__title">🔐 Správa</h1>
+                    <h1 class="section__title">🔐 Správa skříně</h1>
                     <p class="section__description">Zadejte heslo pro přístup k funkcím správce.</p>
                 </div>
                 <form class="form admin-login-form" id="login-form">
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="page-header">
                     <a href="index.html" class="back-link">← Zpět na přehled</a>
                     <div class="admin-header">
-                        <h1 class="section__title">🛠️ Správce panel</h1>
+                        <h1 class="section__title">🛠️ Správa skříně</h1>
                         <button class="button button--secondary button--small" id="logout-btn">
                             Odhlásit se
                         </button>
