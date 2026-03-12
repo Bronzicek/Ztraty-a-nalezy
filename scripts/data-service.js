@@ -114,8 +114,6 @@ const DataService = {
 
     // Vložení demo dat (pro testování)
     insertDemoData() {
-        // Procistime uloziste aby se nahrala nova demo data s obrazky
-        localStorage.removeItem(this.STORAGE_KEY);
 
         if (this._getAll().length > 0) return;
         const demoItems = [
