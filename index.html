@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sablona pro hackathon">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="Hackathon Sablona">
+    <meta property="og:description" content="Sablona pro hackathon webove projekty">
+    <meta property="og:type" content="website">
+    <title>Hackathon Šablona</title>
+    <link rel="stylesheet" href="stylesheets/common.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <span class="navbar__brand">Sablona</span>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <button class="navbar__theme-toggle" aria-label="Prepnout motiv">
+                        <img src="assets/dark-mode.svg" alt="" class="navbar__theme-icon">
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main class="main-content">
+        <section class="section">
+            <h1 class="section__title">Komponenty</h1>
+            <div class="button-group">
+                <button class="button button--primary">Primarni</button>
+                <button class="button button--secondary">Sekundarni</button>
+                <button class="button button--danger">Odstranit</button>
+            </div>
+        </section>
+        <section class="section cards">
+            <article class="card">
+                <div class="card__header">
+                    <h2 class="card__title">Prvni karta</h2>
+                </div>
+                <div class="card__body">
+                    <p class="card__description">Obsah prvni karty.</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card__header">
+                    <h2 class="card__title">Druha karta</h2>
+                </div>
+                <div class="card__body">
+                    <p class="card__description">Obsah druhe karty.</p>
+                </div>
+            </article>
+        </section>
+        <section class="section">
+            <form class="form">
+                <div class="form__group">
+                    <label class="form__label" for="username">Jmeno</label>
+                    <input class="form__input" type="text" id="username" name="username" required>
+                </div>
+                <div class="form__group">
+                    <label class="form__label" for="category">Kategorie</label>
+                    <select class="form__select" id="category" name="category" required>
+                        <option value="frontend">Frontend</option>
+                        <option value="backend">Backend</option>
+                    </select>
+                </div>
+                <button class="button button--primary" type="submit">Odeslat</button>
+            </form>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__content">
+            <p class="footer__text">Hackathon 2026</p>
+        </div>
+    </footer>
+    <script src="scripts/dark-mode.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
