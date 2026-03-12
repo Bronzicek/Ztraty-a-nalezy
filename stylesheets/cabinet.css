@@ -1,0 +1,214 @@
+/* =============================================================================
+   Cabinet – vizualizace skříně
+   ============================================================================= */
+
+.cabinet {
+    background-color: var(--background-color-surface);
+    border: 2px solid var(--border-color-main);
+    border-radius: var(--border-radius-standard);
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+}
+
+.cabinet__header {
+    padding: var(--spacing-medium);
+    border-bottom: 1px solid var(--border-color-main);
+    background: linear-gradient(135deg,
+            hsl(var(--hue), 40%, 95%),
+            hsl(var(--hue), 30%, 90%));
+}
+
+[data-theme="dark"] .cabinet__header {
+    background: linear-gradient(135deg,
+            hsl(var(--hue), 20%, 18%),
+            hsl(var(--hue), 15%, 14%));
+}
+
+.cabinet__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-color-main);
+}
+
+.cabinet__grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 3px;
+    padding: var(--spacing-small);
+    background-color: var(--border-color-main);
+}
+
+.cabinet__cell {
+    aspect-ratio: 1;
+    background-color: var(--background-color-body);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    position: relative;
+    transition: all var(--transition-duration) ease;
+    cursor: default;
+    overflow: hidden;
+    min-height: 60px;
+}
+
+.cabinet__cell-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--text-color-muted);
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    opacity: 0.7;
+    z-index: 2;
+}
+
+.cabinet__cell-empty {
+    font-size: 0.55rem;
+    color: var(--text-color-muted);
+    opacity: 0.5;
+}
+
+/* Obsazená buňka */
+.cabinet__cell--occupied {
+    background: linear-gradient(135deg,
+            hsl(var(--hue), 50%, 92%),
+            hsl(var(--hue), 40%, 86%));
+    cursor: pointer;
+    border: 2px solid hsl(var(--hue), 50%, 70%);
+}
+
+[data-theme="dark"] .cabinet__cell--occupied {
+    background: linear-gradient(135deg,
+            hsl(var(--hue), 30%, 22%),
+            hsl(var(--hue), 25%, 18%));
+    border-color: hsl(var(--hue), 40%, 40%);
+}
+
+.cabinet__cell--occupied:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px hsla(var(--hue), 60%, 50%, 0.3);
+    z-index: 10;
+}
+
+.cabinet__cell-preview {
+    width: 70%;
+    height: 50%;
+    border-radius: 3px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cabinet__cell-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.cabinet__cell-name {
+    font-size: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color-main);
+    text-align: center;
+    line-height: 1.2;
+    margin-top: 2px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Volitelná buňka (ve formuláři) */
+.cabinet__cell--selectable {
+    cursor: pointer;
+    background-color: hsla(140, 50%, 92%, 1);
+    border: 2px dashed hsla(140, 50%, 50%, 0.5);
+}
+
+[data-theme="dark"] .cabinet__cell--selectable {
+    background-color: hsla(140, 30%, 15%, 1);
+    border-color: hsla(140, 40%, 35%, 0.5);
+}
+
+.cabinet__cell--selectable:hover {
+    background-color: hsla(140, 60%, 85%, 1);
+    border-color: hsla(140, 60%, 45%, 0.8);
+    transform: scale(1.05);
+}
+
+[data-theme="dark"] .cabinet__cell--selectable:hover {
+    background-color: hsla(140, 30%, 22%, 1);
+    border-color: hsla(140, 50%, 40%, 0.8);
+}
+
+/* Vybraná buňka */
+.cabinet__cell--selected {
+    background-color: hsl(140, 60%, 75%) !important;
+    border: 2px solid hsl(140, 70%, 40%) !important;
+    box-shadow: 0 0 0 3px hsla(140, 70%, 50%, 0.3);
+}
+
+[data-theme="dark"] .cabinet__cell--selected {
+    background-color: hsl(140, 40%, 25%) !important;
+    border-color: hsl(140, 50%, 45%) !important;
+}
+
+/* Vybraná pozice label */
+.selected-position {
+    display: none;
+    padding: 0.5rem 1rem;
+    background: hsl(140, 50%, 92%);
+    border: 1px solid hsl(140, 40%, 70%);
+    border-radius: var(--border-radius-standard);
+    color: hsl(140, 60%, 25%);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+[data-theme="dark"] .selected-position {
+    background: hsl(140, 30%, 15%);
+    border-color: hsl(140, 30%, 35%);
+    color: hsl(140, 40%, 70%);
+}
+
+.selected-position.visible {
+    display: inline-block;
+}
+
+/* Responsive – menší buňky na mobilu */
+@media (max-width: 768px) {
+    .cabinet__grid {
+        grid-template-columns: repeat(10, 1fr);
+        gap: 2px;
+        padding: 3px;
+    }
+
+    .cabinet__cell {
+        min-height: 40px;
+        padding: 2px;
+    }
+
+    .cabinet__cell-label {
+        font-size: 0.45rem;
+    }
+
+    .cabinet__cell-name {
+        font-size: 0.4rem;
+    }
+
+    .cabinet__cell-empty {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .cabinet__grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}

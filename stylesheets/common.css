@@ -57,7 +57,7 @@
 body {
     background-color: var(--background-color-body);
     color: var(--text-color-main);
-    font-family: system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     transition: background-color var(--transition-duration), color var(--transition-duration);
     line-height: 1.5;
     display: flex;
@@ -292,4 +292,85 @@ img {
 
 .footer__text {
     color: var(--text-color-muted);
+}
+
+/* ---- Hamburger menu ---- */
+.navbar__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar__hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-color-main);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.navbar__hamburger--active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar__hamburger--active span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar__hamburger--active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (max-width: 768px) {
+    .navbar__hamburger {
+        display: flex;
+    }
+
+    .navbar__menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: var(--background-color-surface);
+        box-shadow: var(--shadow-medium);
+        padding: var(--spacing-medium);
+        gap: var(--spacing-small);
+        border-top: 1px solid var(--border-color-main);
+    }
+
+    .navbar__menu--open {
+        display: flex;
+    }
+
+    .navbar__container {
+        position: relative;
+    }
+}
+
+/* ---- Nav links ---- */
+.navbar__link {
+    color: var(--text-color-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--border-radius-standard);
+    transition: all var(--transition-duration);
+}
+
+.navbar__link:hover {
+    color: var(--text-color-main);
+    background-color: var(--border-color-main);
+}
+
+.navbar__link--active {
+    color: var(--color-primary);
+    font-weight: 600;
 }
