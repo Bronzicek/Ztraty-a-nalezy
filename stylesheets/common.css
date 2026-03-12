@@ -164,6 +164,9 @@ img {
     cursor: pointer;
     transition: background-color var(--transition-duration), transform var(--transition-duration);
     color: hsl(0, 0%, 100%);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
 }
 
 .button:active {
@@ -244,6 +247,7 @@ img {
     flex-direction: column;
     gap: var(--spacing-medium);
     max-width: 600px;
+    margin: 0 auto;
 }
 
 .form__group {

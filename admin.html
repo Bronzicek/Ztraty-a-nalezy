@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ztráty a nálezy – školní aplikace pro správu nalezených předmětů">
     <meta name="theme-color" content="#ffffff">
-    <title>Přehled - Ztráty a Nálezy</title>
+    <title>Správa - Ztráty a Nálezy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -24,13 +24,13 @@
             </a>
             <ul class="navbar__menu" id="nav-menu">
                 <li class="navbar__item">
-                    <a href="index.html" class="navbar__link navbar__link--active">Přehled</a>
+                    <a href="index.html" class="navbar__link">Přehled</a>
                 </li>
                 <li class="navbar__item">
                     <a href="add.html" class="navbar__link">Nahlásit nález</a>
                 </li>
                 <li class="navbar__item">
-                    <a href="admin.html" class="navbar__link">Správa</a>
+                    <a href="admin.html" class="navbar__link navbar__link--active">Správa</a>
                 </li>
                 <li class="navbar__item">
                     <button class="navbar__theme-toggle" id="theme-toggle" aria-label="Přepnout motiv">
@@ -46,34 +46,8 @@
         </div>
     </nav>
 
-    <main class="main-content">
-        <section class="section hero-section">
-            <div class="hero">
-                <h1 class="hero__title">Ztráty a Nálezy</h1>
-                <p class="hero__subtitle">Našli jste něco? Nahlaste to. Ztratili jste něco? Podívejte se sem.</p>
-                <div class="hero__actions">
-                    <a href="add.html" class="button button--primary button--large">
-                        ➕ Nahlásit nález
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section__title">📦 Skříň ztrát a nálezů</h2>
-            <p class="section__description">Klikněte na obsazenou pozici pro detail předmětu.</p>
-            <div id="cabinet-container">
-                <!-- Skříň bude generována přes JavaScript -->
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section__title">📋 Aktuální nálezy</h2>
-            <p class="section__description" id="items-count-container">Načítání...</p>
-            <div id="items-cards-container">
-                <!-- Nálezy zde budou doplněny z JS -->
-            </div>
-        </section>
+    <main class="main-content" id="app-root">
+        <!-- Vykreslování přes JS: login / dashboard -->
     </main>
 
     <footer class="footer">
@@ -86,7 +60,7 @@
     <script src="scripts/cabinet.js"></script>
     <script src="scripts/dark-mode.js"></script>
     <script src="scripts/main.js"></script>
-    <script src="scripts/page-index.js"></script>
+    <script src="scripts/page-admin.js"></script>
 </body>
 
 </html>

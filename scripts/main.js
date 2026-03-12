@@ -3,11 +3,7 @@
 // =============================================================================
 
 (function () {
-    // Registrace routes
-    Router.register('/', () => HomeView.render());
-    Router.register('/add', () => AddItemView.render());
-    Router.register('/item/:id', (params) => ItemDetailView.render(params));
-    Router.register('/admin', () => AdminView.render());
+
 
     // Vložit demo data pro testování
     DataService.insertDemoData();
@@ -31,8 +27,6 @@
         });
     }
 
-    // Spustit router
-    Router.init();
 
     console.log('App initialized');
 })();

@@ -3,12 +3,8 @@
 // =============================================================================
 
 const PhotoService = {
-    // Maximální rozměr fotky (px) – zmenšíme pro úsporu místa
     MAX_SIZE: 800,
-    // Kvalita JPEG komprese (0-1)
     QUALITY: 0.7,
-
-    // Převod souboru na zmenšený Base64 string
     async processPhoto(file) {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();

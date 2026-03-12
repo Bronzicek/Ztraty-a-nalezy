@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ztráty a nálezy – školní aplikace pro správu nalezených předmětů">
+    <meta name="theme-color" content="#ffffff">
+    <title>Nahlásit - Ztráty a Nálezy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/common.css">
+    <link rel="stylesheet" href="stylesheets/cabinet.css">
+    <link rel="stylesheet" href="stylesheets/views.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" class="navbar__brand">
+                <span class="navbar__logo">🔍</span>
+                Ztráty a Nálezy
+            </a>
+            <ul class="navbar__menu" id="nav-menu">
+                <li class="navbar__item">
+                    <a href="index.html" class="navbar__link">Přehled</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="add.html" class="navbar__link navbar__link--active">Nahlásit nález</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="admin.html" class="navbar__link">Správa</a>
+                </li>
+                <li class="navbar__item">
+                    <button class="navbar__theme-toggle" id="theme-toggle" aria-label="Přepnout motiv">
+                        <img src="assets/dark-mode.svg" alt="" class="navbar__theme-icon">
+                    </button>
+                </li>
+            </ul>
+            <button class="navbar__hamburger" id="hamburger-toggle" aria-label="Otevřít menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div id="add-form-container">
+            <section class="section">
+                <div class="page-header">
+                    <a href="index.html" class="back-link">← Zpět na přehled</a>
+                    <h1 class="section__title">📝 Nahlásit nález</h1>
+                    <p class="section__description">Našli jste ztracený předmět? Vyplňte formulář a umístěte ho do
+                        skříně.</p>
+                </div>
+
+                <form class="form" id="add-item-form">
+                    <div class="form__group">
+                        <label class="form__label" for="item-name">Název předmětu *</label>
+                        <input class="form__input" type="text" id="item-name" name="name"
+                            placeholder="Např. Klíče, Mikina, Kalkulačka..." required>
+                    </div>
+
+                    <div class="form__group">
+                        <label class="form__label" for="item-description">Popis</label>
+                        <textarea class="form__input form__textarea" id="item-description" name="description"
+                            placeholder="Popište předmět – barva, velikost, zvláštní znaky..." rows="3"></textarea>
+                    </div>
+
+                    <div class="form__group">
+                        <label class="form__label" for="item-location">Kde jste to našli? *</label>
+                        <input class="form__input" type="text" id="item-location" name="foundLocation"
+                            placeholder="Např. Chodba u jídelny, Tělocvična..." required>
+                    </div>
+
+                    <div class="form__group">
+                        <label class="form__label" for="item-finder">Vaše jméno *</label>
+                        <input class="form__input" type="text" id="item-finder" name="foundBy" placeholder="Vaše jméno"
+                            required>
+                    </div>
+
+                    <div class="form__group">
+                        <label class="form__label" for="item-photo">Fotka předmětu</label>
+                        <div class="photo-upload" id="photo-upload-area">
+                            <input type="file" id="item-photo" name="photo" accept="image/*" capture="environment"
+                                class="photo-upload__input">
+                            <label for="item-photo" class="photo-upload__label">
+                                <span class="photo-upload__icon">📸</span>
+                                <span class="photo-upload__text">Klikněte pro výběr fotky nebo vyfocení</span>
+                            </label>
+                            <div class="photo-preview" id="photo-preview"></div>
+                        </div>
+                    </div>
+
+                    <div class="form__group">
+                        <label class="form__label">Vyberte pozici ve skříni *</label>
+                        <p class="form__hint">Klikněte na volnou (zelenou) pozici ve skříni.</p>
+                        <input type="hidden" id="cabinet-position-input" name="cabinetPosition" required>
+                        <span class="selected-position" id="selected-position-label"></span>
+                        <div id="cabinet-container">
+                            <!-- Vykreslí JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="form__actions">
+                        <button class="button button--primary button--large" type="submit" id="submit-btn">
+                            ✅ Uložit nález
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+        <div id="success-container" style="display: none;">
+            <!-- Úspěšná hláška po přidání -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__content">
+            <p class="footer__text">Ztráty a Nálezy &copy; 2026 | Hackathon projekt</p>
+        </div>
+    </footer>
+
+    <script src="scripts/data-service.js"></script>
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/cabinet.js"></script>
+    <script src="scripts/dark-mode.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/page-add.js"></script>
+</body>
+
+</html>
