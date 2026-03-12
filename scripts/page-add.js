@@ -8,6 +8,70 @@ document.addEventListener("DOMContentLoaded", () => {
         cabinetContainer.innerHTML = Cabinet.renderCabinet(positionMap, { selectable: true });
     }
 
+    // Classroom selector logic
+    const selectClassroomBtn = document.getElementById('select-classroom-btn');
+    const classroomModal = document.getElementById('classroom-modal');
+    const classroomModalClose = document.getElementById('classroom-modal-close');
+    const classroomModalOverlay = document.getElementById('classroom-modal-overlay');
+    const classroomSearch = document.getElementById('classroom-search');
+    const classroomGrid = document.getElementById('classroom-grid');
+    const locationInput = document.getElementById('item-location');
+
+    // Generate classrooms (5 floors, 12 per floor)
+    const classrooms = [];
+    for (let floor = 1; floor <= 5; floor++) {
+        for (let room = 1; room <= 12; room++) {
+            classrooms.push(`${floor}${room.toString().padStart(2, '0')}`);
+        }
+    }
+
+    function renderClassrooms(filter = '') {
+        if (!classroomGrid) return;
+        classroomGrid.innerHTML = '';
+        const filtered = classrooms.filter(c => c.includes(filter));
+        
+        if (filtered.length === 0) {
+            classroomGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-color-muted);">Žádná učebna nenalezena.</p>';
+            return;
+        }
+
+        filtered.forEach(room => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'classroom-btn';
+            btn.textContent = room;
+            btn.addEventListener('click', () => {
+                locationInput.value = `Učebna ${room}`;
+                closeModal();
+            });
+            classroomGrid.appendChild(btn);
+        });
+    }
+
+    function openModal() {
+        if (classroomModal) {
+            classroomModal.classList.add('modal--open');
+            renderClassrooms();
+            classroomSearch.value = '';
+            setTimeout(() => classroomSearch.focus(), 100);
+        }
+    }
+
+    function closeModal() {
+        if (classroomModal) {
+            classroomModal.classList.remove('modal--open');
+        }
+    }
+
+    if (selectClassroomBtn) selectClassroomBtn.addEventListener('click', openModal);
+    if (classroomModalClose) classroomModalClose.addEventListener('click', closeModal);
+    if (classroomModalOverlay) classroomModalOverlay.addEventListener('click', closeModal);
+    if (classroomSearch) {
+        classroomSearch.addEventListener('input', (e) => {
+            renderClassrooms(e.target.value.trim());
+        });
+    }
+
     const photoInput = document.getElementById("item-photo");
     if (photoInput) {
         photoInput.addEventListener("change", async (event) => {

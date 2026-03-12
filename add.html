@@ -71,8 +71,14 @@
 
                     <div class="form__group">
                         <label class="form__label" for="item-location">Kde jste to našli? *</label>
-                        <input class="form__input" type="text" id="item-location" name="foundLocation"
-                            placeholder="Např. Chodba u jídelny, Tělocvična..." required>
+                        <div style="display: flex; gap: var(--spacing-small);">
+                            <input class="form__input" type="text" id="item-location" name="foundLocation"
+                                placeholder="Např. Chodba u jídelny, Tělocvična..." required style="flex: 1;">
+                            <button type="button" class="button button--secondary" id="select-classroom-btn"
+                                style="white-space: nowrap; font-size: 0.9rem; padding: 0.5rem 1rem;">
+                                🏫 Učebna
+                            </button>
+                        </div>
                     </div>
 
                     <div class="form__group">
@@ -105,11 +111,32 @@
                     </div>
 
                     <div class="form__actions">
-                        <button class="button button--primary button--large" type="submit" id="submit-btn">
+                        <button class="button button--primary button--large" type="submit" id="submit-btn"
+                            style="width: 100%;">
                             ✅ Uložit nález
                         </button>
                     </div>
                 </form>
+
+                <!-- Classroom Select Modal -->
+                <div class="modal" id="classroom-modal">
+                    <div class="modal__overlay" id="classroom-modal-overlay"></div>
+                    <div class="modal__content">
+                        <div class="modal__header">
+                            <h2 class="modal__title" style="font-size: 1.2rem;">Vybrat učebnu</h2>
+                            <button type="button" class="modal__close" id="classroom-modal-close">✕</button>
+                        </div>
+                        <div class="modal__body">
+                            <input type="text" class="form__input" id="classroom-search"
+                                placeholder="Hledejte učebnu (např. 304)..." autocomplete="off"
+                                style="margin-bottom: var(--spacing-medium);">
+                            <div class="classroom-grid" id="classroom-grid">
+                                <!-- Vykreslí JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </section>
         </div>
 

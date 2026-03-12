@@ -671,3 +671,90 @@
         padding: 0.5rem;
     }
 }
+
+/* ---- Modal ---- */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal--open {
+    display: flex;
+}
+
+.modal__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.modal__content {
+    position: relative;
+    background: var(--background-color-surface);
+    border-radius: var(--border-radius-standard);
+    box-shadow: var(--shadow-medium);
+    border: 1px solid var(--border-color-main);
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 1001;
+}
+
+.modal__header {
+    padding: var(--spacing-medium);
+    border-bottom: 1px solid var(--border-color-main);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal__close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color-muted);
+}
+
+.modal__body {
+    padding: var(--spacing-medium);
+    overflow-y: auto;
+}
+
+.classroom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: var(--spacing-small);
+}
+
+.classroom-btn {
+    padding: 0.5rem;
+    background: var(--background-color-body);
+    border: 1px solid var(--border-color-main);
+    border-radius: var(--border-radius-standard);
+    text-align: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color-main);
+    transition: all var(--transition-duration);
+}
+
+.classroom-btn:hover {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
