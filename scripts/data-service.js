@@ -114,31 +114,34 @@ const DataService = {
 
     // Vložení demo dat (pro testování)
     insertDemoData() {
+        // Procistime uloziste aby se nahrala nova demo data s obrazky
+        localStorage.removeItem(this.STORAGE_KEY);
+
         if (this._getAll().length > 0) return;
         const demoItems = [
             {
-                name: 'Klíče od šatny',
-                description: 'Stříbrné klíče s modrým přívěskem',
+                name: 'Klíčenka',
+                description: 'Klíčenka s několika klíči a modrým přívěskem',
                 foundLocation: 'Chodba u jídelny',
                 foundBy: 'Jan Novák',
                 cabinetPosition: 'A3',
-                photoBase64: null
+                photoBase64: 'assets/klicenka.webp'
             },
             {
-                name: 'Černá mikina',
-                description: 'Černá mikina s kapucí, velikost M',
+                name: 'Růžová holčičí čepice',
+                description: 'Teplá pletená růžová čepice s bambulí',
                 foundLocation: 'Tělocvična',
                 foundBy: 'Petra Dvořáková',
                 cabinetPosition: 'B5',
-                photoBase64: null
+                photoBase64: 'assets/cepice.webp'
             },
             {
                 name: 'Kalkulačka Casio',
-                description: 'Vědecká kalkulačka, šedá',
+                description: 'Vědecká kalkulačka, šedý model',
                 foundLocation: 'Učebna 204',
                 foundBy: 'Tomáš Kříž',
                 cabinetPosition: 'C1',
-                photoBase64: null
+                photoBase64: 'assets/kalkulacka.jpg'
             }
         ];
         demoItems.forEach(item => this.addItem(item));

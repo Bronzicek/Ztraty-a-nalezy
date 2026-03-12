@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!classroomGrid) return;
         classroomGrid.innerHTML = '';
         const filtered = classrooms.filter(c => c.includes(filter));
-        
+
         if (filtered.length === 0) {
             classroomGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-color-muted);">Žádná učebna nenalezena.</p>';
             return;
