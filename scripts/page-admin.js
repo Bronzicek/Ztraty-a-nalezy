@@ -103,9 +103,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                 ${isPickedUp ? `Vyzvednuto (${item.pickedUpBy || '?'})` : 'Ve skříni'}
                             </span>
                         </td>
-                        <td class="admin-table__actions">
-                            <button class="button button--secondary button--small edit-btn" data-id="${item.id}">✏️</button>
-                            <button class="button button--danger button--small delete-btn" data-id="${item.id}" data-name="${item.name.replace(/'/g, "\\'")}">🗑️</button>
+                        <td>
+                            <div class="admin-table__actions">
+                                <button class="button button--secondary button--small edit-btn" data-id="${item.id}">✏️</button>
+                                <button class="button button--danger button--small delete-btn" data-id="${item.id}" data-name="${item.name.replace(/'/g, "\\'")}">🗑️</button>
+                            </div>
                         </td>
                     </tr>
                 `;
