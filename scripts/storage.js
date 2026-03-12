@@ -7,28 +7,29 @@ const PhotoService = {
     QUALITY: 0.7,
     async processPhoto(file) {
         return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const img = new Image();
-                img.onload = () => {
-                    try {
-                        const base64 = this.compressImage(img);
-                        resolve(base64);
-                    } catch (err) {
-                        reject(err);
-                    }
-                };
-                img.onerror = () => reject(new Error('Nepodařilo se načíst obrázek'));
-                img.src = e.target.result;
+            const img = new Image();
+            img.onload = () => {
+                try {
+                    const base64 = this.compressImage(img);
+                    URL.revokeObjectURL(img.src);
+                    resolve(base64);
+                } catch (err) {
+                    URL.revokeObjectURL(img.src);
+                    reject(err);
+                }
             };
-            reader.onerror = () => reject(new Error('Nepodařilo se přečíst soubor'));
-            reader.readAsDataURL(file);
+            img.onerror = () => {
+                URL.revokeObjectURL(img.src);
+                reject(new Error('Nepodařilo se načíst obrázek'));
+            };
+            img.src = URL.createObjectURL(file);
         });
     },
 
     compressImage(img) {
         const canvas = document.createElement('canvas');
-        let { width, height } = img;
+        let width = img.naturalWidth || img.width;
+        let height = img.naturalHeight || img.height;
 
         if (width > this.MAX_SIZE || height > this.MAX_SIZE) {
             if (width > height) {
