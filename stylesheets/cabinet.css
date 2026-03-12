@@ -181,7 +181,6 @@
     display: inline-block;
 }
 
-/* Responsive – menší buňky na mobilu */
 @media (max-width: 768px) {
     .cabinet__grid {
         grid-template-columns: repeat(10, 1fr);

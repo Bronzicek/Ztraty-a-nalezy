@@ -173,6 +173,21 @@ img {
     transform: scale(0.98);
 }
 
+.button img,
+.button__icon {
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    filter: brightness(0) invert(1);
+}
+
+.button--large img,
+.button--large .button__icon {
+    width: 1.4em;
+    height: 1.4em;
+}
+
 .button--primary {
     background-color: var(--color-primary);
 }
