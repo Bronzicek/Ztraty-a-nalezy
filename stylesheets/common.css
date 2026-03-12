@@ -165,8 +165,11 @@ img {
     transition: background-color var(--transition-duration), transform var(--transition-duration);
     color: hsl(0, 0%, 100%);
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    gap: 0.6rem;
 }
 
 .button:active {
@@ -175,17 +178,16 @@ img {
 
 .button img,
 .button__icon {
-    width: 1.2em;
-    height: 1.2em;
-    vertical-align: middle;
-    margin-right: 0.5rem;
+    width: 1.4em;
+    height: 1.4em;
+    flex-shrink: 0;
     filter: brightness(0) invert(1);
 }
 
 .button--large img,
 .button--large .button__icon {
-    width: 1.4em;
-    height: 1.4em;
+    width: 1.6em;
+    height: 1.6em;
 }
 
 .button--primary {
