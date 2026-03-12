@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                     ` : `
                         <div class="detail__pickup-form" id="pickup-section">
-                            <h3 class="detail__pickup-title">🤚 Chcete si tento předmět vyzvednout?</h3>
+                            <h3 class="detail__pickup-title">🤚 Je tento předmět váš?</h3>
                             <p class="detail__pickup-hint">Vezměte si předmět z pozice <strong>${item.cabinetPosition}</strong> ve skříni a vyplňte své jméno.</p>
                             <form id="pickup-form" class="detail__pickup-inline">
                                 <input type="text" class="form__input" id="pickup-name" 
