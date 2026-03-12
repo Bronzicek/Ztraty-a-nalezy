@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 events.push({
                     type: 'add',
                     date: new Date(item.createdAt),
-                    text: `<strong>${item.foundBy || 'Někdo'}</strong> přinesl/a <strong>${item.name}</strong> a uložil/a do skříně.`
+                    text: `<strong>${item.foundBy || 'Někdo'}</strong> přinesl/a <strong>${item.name}</strong> a uložil/a na pozici <strong>${item.cabinetPosition || '?'}</strong>.`
                 });
             }
             // Event: Vyzvednutí předmětu
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 events.push({
                     type: 'pickup',
                     date: new Date(item.pickedUpDate),
-                    text: `<strong>${item.pickedUpBy || 'Někdo'}</strong> si vyzvedl/a <strong>${item.name}</strong>.`
+                    text: `<strong>${item.pickedUpBy || 'Někdo'}</strong> si vyzvedl/a <strong>${item.name}</strong> z pozice <strong>${item.cabinetPosition || '?'}</strong>.`
                 });
             }
         });
