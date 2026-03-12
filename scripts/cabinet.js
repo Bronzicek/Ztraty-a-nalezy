@@ -3,8 +3,8 @@
 // =============================================================================
 
 const Cabinet = {
-    rows: 5,
-    cols: 10,
+    rows: 4,
+    cols: 8,
 
     // Generování názvů pozic (A1, A2, ... E10)
     getPositionName(row, col) {
@@ -34,7 +34,7 @@ const Cabinet = {
 
                 html += `<div class="${cellClass}" data-position="${position}" 
                     ${selectable && !isOccupied ? `onclick="CabinetUI.selectPosition('${position}')"` : ''}
-                    ${isOccupied && onItemClick ? `onclick="Router.navigate('/item/${item.id}')"` : ''}
+                    ${isOccupied && onItemClick ? `onclick="window.location.href = 'detail.html?id=${item.id}'"` : ''}
                     role="button" tabindex="0"
                     title="${isOccupied ? item.name : `Pozice ${position} – volná`}">
                     <span class="cabinet__cell-label">${position}</span>
