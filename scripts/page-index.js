@@ -54,4 +54,58 @@ document.addEventListener("DOMContentLoaded", () => {
             itemsCardsContainer.innerHTML = "";
         }
     }
+
+    // 3. Nedávná aktivita (Log změn)
+    const activityContainer = document.getElementById("activity-log-container");
+    if (activityContainer) {
+        const allItems = DataService.getAllItems();
+        let events = [];
+
+        allItems.forEach(item => {
+            // Event: Přidání předmětu
+            if (item.createdAt) {
+                events.push({
+                    type: 'add',
+                    date: new Date(item.createdAt),
+                    text: `<strong>${item.foundBy || 'Někdo'}</strong> přinesl/a <strong>${item.name}</strong> a uložil/a do skříně.`
+                });
+            }
+            // Event: Vyzvednutí předmětu
+            if (item.status === 'picked_up' && item.pickedUpDate) {
+                events.push({
+                    type: 'pickup',
+                    date: new Date(item.pickedUpDate),
+                    text: `<strong>${item.pickedUpBy || 'Někdo'}</strong> si vyzvedl/a <strong>${item.name}</strong>.`
+                });
+            }
+        });
+
+        // Seřadit od nejnovější po nejstarší
+        events.sort((a, b) => b.date - a.date);
+
+        // Zobrazit max 8 posledních
+        events = events.slice(0, 8);
+
+        if (events.length === 0) {
+            activityContainer.innerHTML = '<p class="text-muted">Zatím se nic nestalo.</p>';
+        } else {
+            let html = '<ul class="activity-list">';
+            events.forEach(ev => {
+                const dateStr = ev.date.toLocaleString('cs-CZ', { day: 'numeric', month: 'short', hour: '2-digit', minute:'2-digit' });
+                const icon = ev.type === 'add' ? '📥' : '📤';
+                
+                html += `
+                    <li class="activity-item">
+                        <span class="activity-icon" aria-hidden="true">${icon}</span>
+                        <div class="activity-content">
+                            <span class="activity-text">${ev.text}</span>
+                            <span class="activity-date">${dateStr}</span>
+                        </div>
+                    </li>
+                `;
+            });
+            html += '</ul>';
+            activityContainer.innerHTML = html;
+        }
+    }
 });

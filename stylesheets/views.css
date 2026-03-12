@@ -758,3 +758,57 @@
     color: white;
     border-color: var(--color-primary);
 }
+
+/* ---- Activity Log / Historie ---- */
+.activity-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+    padding: 0;
+    margin: 0;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-medium);
+    background: var(--background-color-surface);
+    padding: var(--spacing-medium);
+    border-radius: var(--border-radius-standard);
+    border: 1px solid var(--border-color-main);
+    box-shadow: var(--shadow-small);
+}
+
+.activity-icon {
+    font-size: 1.5rem;
+    background: var(--background-color-body);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.activity-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.activity-text {
+    font-size: 0.95rem;
+    color: var(--text-color-main);
+    line-height: 1.4;
+}
+
+.activity-text strong {
+    font-weight: 700;
+}
+
+.activity-date {
+    font-size: 0.8rem;
+    color: var(--text-color-muted);
+}
