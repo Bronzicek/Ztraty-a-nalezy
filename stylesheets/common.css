@@ -115,6 +115,15 @@ img {
     font-weight: 700;
     text-decoration: none;
     color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar__logo {
+    width: 2rem;
+    height: 2rem;
+    object-fit: contain;
 }
 
 .navbar__menu {

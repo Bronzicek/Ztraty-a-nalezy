@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const appRoot = document.getElementById("app-root");
 
-    // Ziskej ID predmetu z URL (napr. detail.html?id=123)
     const urlParams = new URLSearchParams(window.location.search);
     const itemId = urlParams.get('id');
 
@@ -120,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (confirm(`Potvrzujete, že si vyzvedáváte tento předmět?\n\nJméno: ${name}`)) {
                 DataService.pickUpItem(itemId, name);
-                window.location.reload(); // Pro jednduchost znovunačteme stránku
+                window.location.reload();
             }
         });
     }

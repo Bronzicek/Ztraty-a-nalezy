@@ -6,28 +6,23 @@ const Router = {
     routes: {},
     currentCleanup: null,
 
-    // Registrace route
     register(path, handler) {
         this.routes[path] = handler;
     },
 
-    // Navigace na novou route
     navigate(path) {
         window.location.hash = path;
     },
 
-    // Zpracování aktuální hash route
     async handleRoute() {
         const hash = window.location.hash.slice(1) || '/';
         const appRoot = document.getElementById('app-root');
 
-        // Vyčistit předchozí view
         if (this.currentCleanup && typeof this.currentCleanup === 'function') {
             this.currentCleanup();
             this.currentCleanup = null;
         }
 
-        // Najít odpovídající route
         let handler = null;
         let params = {};
 
@@ -40,11 +35,9 @@ const Router = {
             }
         }
 
-        // Aktualizovat aktivní nav link
         this.updateNavLinks(hash);
 
         if (handler) {
-            // Zobrazit loading
             appRoot.innerHTML = '<div class="loading-spinner"><div class="spinner"></div><p>Načítání...</p></div>';
             appRoot.classList.add('view-transition');
 
@@ -53,7 +46,6 @@ const Router = {
                 if (typeof result === 'string') {
                     appRoot.innerHTML = result;
                 }
-                // Posunout nahoru
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } catch (error) {
                 console.error('Route error:', error);
@@ -66,7 +58,6 @@ const Router = {
                 `;
             }
 
-            // Odebrat transition třídu po animaci
             requestAnimationFrame(() => {
                 appRoot.classList.remove('view-transition');
             });
@@ -82,7 +73,6 @@ const Router = {
         }
     },
 
-    // Pattern matching pro routes (podporuje :param)
     matchRoute(pattern, hash) {
         const patternParts = pattern.split('/').filter(Boolean);
         const hashParts = hash.split('/').filter(Boolean);
@@ -101,7 +91,6 @@ const Router = {
         return { params };
     },
 
-    // Aktualizace aktivního nav linku
     updateNavLinks(hash) {
         document.querySelectorAll('.navbar__link').forEach(link => {
             link.classList.remove('navbar__link--active');
@@ -114,10 +103,8 @@ const Router = {
         });
     },
 
-    // Inicializace routeru
     init() {
         window.addEventListener('hashchange', () => this.handleRoute());
-        // Počáteční route
         if (!window.location.hash) {
             window.location.hash = '#/';
         } else {

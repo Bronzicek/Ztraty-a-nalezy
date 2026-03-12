@@ -26,12 +26,10 @@ const PhotoService = {
         });
     },
 
-    // Zmenšení a komprese obrázku
     compressImage(img) {
         const canvas = document.createElement('canvas');
         let { width, height } = img;
 
-        // Zmenšit pokud je moc velký
         if (width > this.MAX_SIZE || height > this.MAX_SIZE) {
             if (width > height) {
                 height = Math.round((height * this.MAX_SIZE) / width);
@@ -48,11 +46,9 @@ const PhotoService = {
         const ctx = canvas.getContext('2d');
         ctx.drawImage(img, 0, 0, width, height);
 
-        // Vrátit jako base64 JPEG
         return canvas.toDataURL('image/jpeg', this.QUALITY);
     },
 
-    // Náhled fotky před uploadem
     createPreview(base64) {
         const img = document.createElement('img');
         img.src = base64;

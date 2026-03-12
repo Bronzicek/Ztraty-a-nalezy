@@ -1,16 +1,10 @@
-// Logika pro index.html
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Vykresleni skrine
     const cabinetContainer = document.getElementById("cabinet-container");
     if (cabinetContainer) {
         const positionMap = DataService.getItemsByPosition();
-        // Vykresli vcetne prokliku. cabinet.js ocekava onItemClick. Muzu prepsat.
-        // Puvodne onclick="Router.navigate('/item/'+item.id)". Misto toho udelam klasicky odkaz:
-        // Ale cabinet.js do statickeho html zaplaty dava onclick.  Upravim ho za moment.
         cabinetContainer.innerHTML = Cabinet.renderCabinet(positionMap, { onItemClick: true });
     }
 
-    // 2. Vykresleni karet
     const itemsCountContainer = document.getElementById("items-count-container");
     const itemsCardsContainer = document.getElementById("items-cards-container");
 
@@ -25,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
             let html = '<div class="cards">';
             items.forEach(item => {
                 const date = item.createdAt ? new Date(item.createdAt).toLocaleDateString('cs-CZ') : 'Neznámé';
-                // href="detail.html?id=ID"
                 html += `
                     <a href="detail.html?id=${item.id}" class="card card--clickable" style="text-decoration: none; color: inherit;">
                         <div class="card__image-container">
@@ -55,14 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 3. Nedávná aktivita (Log změn)
     const activityContainer = document.getElementById("activity-log-container");
     if (activityContainer) {
         const allItems = DataService.getAllItems();
         let events = [];
 
         allItems.forEach(item => {
-            // Event: Přidání předmětu
             if (item.createdAt) {
                 events.push({
                     type: 'add',
@@ -70,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     text: `<strong>${item.foundBy || 'Někdo'}</strong> přinesl/a <strong>${item.name}</strong> a uložil/a na pozici <strong>${item.cabinetPosition || '?'}</strong>.`
                 });
             }
-            // Event: Vyzvednutí předmětu
+
             if (item.status === 'picked_up' && item.pickedUpDate) {
                 events.push({
                     type: 'pickup',
@@ -80,10 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Seřadit od nejnovější po nejstarší
         events.sort((a, b) => b.date - a.date);
 
-        // Zobrazit max 8 posledních
         events = events.slice(0, 8);
 
         if (events.length === 0) {
@@ -91,9 +80,9 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             let html = '<ul class="activity-list">';
             events.forEach(ev => {
-                const dateStr = ev.date.toLocaleString('cs-CZ', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute:'2-digit' });
+                const dateStr = ev.date.toLocaleString('cs-CZ', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
                 const icon = ev.type === 'add' ? '📥' : '📤';
-                
+
                 html += `
                     <li class="activity-item">
                         <span class="activity-icon" aria-hidden="true">${icon}</span>

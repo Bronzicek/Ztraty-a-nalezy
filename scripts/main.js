@@ -4,11 +4,8 @@
 
 (function () {
 
-
-    // Vložit demo data pro testování
     DataService.insertDemoData();
 
-    // Hamburger menu pro mobilní zařízení
     const hamburger = document.getElementById('hamburger-toggle');
     const navMenu = document.getElementById('nav-menu');
 
@@ -18,7 +15,6 @@
             navMenu.classList.toggle('navbar__menu--open');
         });
 
-        // Zavřít menu po kliknutí na odkaz
         navMenu.querySelectorAll('.navbar__link').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('navbar__hamburger--active');

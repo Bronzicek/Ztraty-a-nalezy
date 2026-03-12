@@ -2,7 +2,6 @@
    Views – styly pro jednotlivé pohledy a komponenty
    ============================================================================= */
 
-/* ---- Hero sekce ---- */
 .hero {
     text-align: center;
     padding: clamp(2rem, 6vw, 4rem) var(--spacing-medium);
@@ -44,7 +43,6 @@
     flex-wrap: wrap;
 }
 
-/* ---- Tlačítka – rozšíření ---- */
 .button--large {
     padding: 1rem 2rem;
     font-size: 1.1rem;
@@ -81,7 +79,6 @@
     opacity: 0.8;
 }
 
-/* ---- Cards – rozšíření ---- */
 .card--clickable {
     cursor: pointer;
 }
@@ -142,7 +139,6 @@
     color: var(--text-color-muted);
 }
 
-/* ---- Photo upload ---- */
 .photo-upload {
     position: relative;
 }
@@ -211,7 +207,6 @@
     color: var(--color-danger);
 }
 
-/* ---- Detail view ---- */
 .detail {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -333,7 +328,6 @@
     font-size: 0.9rem;
 }
 
-/* Pickup form */
 .detail__pickup-form {
     padding: var(--spacing-medium);
     background: hsl(var(--hue), 30%, 95%);
@@ -377,7 +371,6 @@
     border-color: hsl(140, 20%, 30%);
 }
 
-/* ---- Success view ---- */
 .success-view {
     display: flex;
     justify-content: center;
@@ -485,7 +478,6 @@
     margin-top: 0.25rem;
 }
 
-/* Admin table */
 .admin-table-wrapper {
     overflow-x: auto;
     border-radius: var(--border-radius-standard);
@@ -585,7 +577,6 @@
     margin-bottom: 1.5rem;
 }
 
-/* ---- Loading spinner ---- */
 .loading-spinner {
     display: flex;
     flex-direction: column;
@@ -611,7 +602,6 @@
     }
 }
 
-/* ---- Form rozšíření ---- */
 .form__textarea {
     resize: vertical;
     min-height: 80px;
@@ -626,7 +616,6 @@
     margin-top: var(--spacing-small);
 }
 
-/* ---- View transitions ---- */
 .view-transition {
     animation: fadeIn 0.3s ease;
 }
@@ -643,7 +632,6 @@
     }
 }
 
-/* ---- Responsive ---- */
 @media (max-width: 768px) {
     .detail {
         grid-template-columns: 1fr;
@@ -672,7 +660,6 @@
     }
 }
 
-/* ---- Modal ---- */
 .modal {
     display: none;
     position: fixed;
@@ -759,7 +746,6 @@
     border-color: var(--color-primary);
 }
 
-/* ---- Activity Log / Historie ---- */
 .activity-list {
     list-style: none;
     display: flex;

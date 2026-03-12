@@ -12,7 +12,6 @@ const Cabinet = {
         return `${rowLetter}${col + 1}`;
     },
 
-    // Vykreslení skříně – přehledový mód (hlavní stránka)
     renderCabinet(positionMap = {}, options = {}) {
         const { selectable = false, selectedPosition = null, onSelect = null, onItemClick = null } = options;
 
@@ -60,7 +59,6 @@ const Cabinet = {
     }
 };
 
-// UI handler pro výběr pozice ve skříni (formulář přidání)
 const CabinetUI = {
     selectedPosition: null,
     onSelectCallback: null,
@@ -68,24 +66,18 @@ const CabinetUI = {
     selectPosition(position) {
         this.selectedPosition = position;
 
-        // Odznačit předchozí výběr
         document.querySelectorAll('.cabinet__cell--selected').forEach(cell => {
             cell.classList.remove('cabinet__cell--selected');
         });
-
-        // Označit nový výběr
         const cell = document.querySelector(`[data-position="${position}"]`);
         if (cell) {
             cell.classList.add('cabinet__cell--selected');
         }
 
-        // Aktualizovat hidden input
         const input = document.getElementById('cabinet-position-input');
         if (input) {
             input.value = position;
         }
-
-        // Aktualizovat label
         const label = document.getElementById('selected-position-label');
         if (label) {
             label.textContent = `Vybraná pozice: ${position}`;

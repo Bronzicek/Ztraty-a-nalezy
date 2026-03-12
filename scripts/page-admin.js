@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const name = btn.getAttribute("data-name");
                 if (confirm(`Opravdu chcete smazat "${name}"?`)) {
                     DataService.deleteItem(id);
-                    renderDashboard(); // Re-render table
+                    renderDashboard();
                 }
             });
         });
@@ -147,7 +147,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!item) return;
 
         const positionMap = DataService.getItemsByPosition();
-        // Uvolníme aktuální pozici pro editaci
         delete positionMap[item.cabinetPosition];
 
         appRoot.innerHTML = `

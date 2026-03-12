@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
         cabinetContainer.innerHTML = Cabinet.renderCabinet(positionMap, { selectable: true });
     }
 
-    // Classroom selector logic
     const selectClassroomBtn = document.getElementById('select-classroom-btn');
     const classroomModal = document.getElementById('classroom-modal');
     const classroomModalClose = document.getElementById('classroom-modal-close');
@@ -17,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const classroomGrid = document.getElementById('classroom-grid');
     const locationInput = document.getElementById('item-location');
 
-    // Generate classrooms (5 floors, 12 per floor)
     const classrooms = [];
     for (let floor = 1; floor <= 5; floor++) {
         for (let room = 1; room <= 12; room++) {
@@ -123,7 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             DataService.addItem(formData);
 
-            // Zobrazit success
             document.getElementById("add-form-container").style.display = "none";
             const successContainer = document.getElementById("success-container");
             successContainer.style.display = "block";
